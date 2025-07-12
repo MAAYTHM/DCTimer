@@ -232,6 +232,12 @@ Below is a typical workflow for DCTimer:
 3. **Run user command or shell** in the chosen time context.
 4. **Reset system time** (if system-level technique used) after command/shell exits.
 
+## 🔧 Quick Faketime Wrapper (Technique 6) included
+You can use this bash snippet to instantly launch a shell with time faked using the current offset from a Domain Controller or NTP server:
+```bash
+./fakeShell.sh <DC IP>
+```
+
 ## Public NTP Servers
 
 Some reliable public NTP servers for testing:
