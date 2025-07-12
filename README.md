@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="256" height="256" alt="DCTimer Logo" src="https://github.com/user-attachments/assets/0b0b0053-c8f8-4145-b1cd-3c16a17e91e9" />
+  <img width="256" height="256" alt="DCTimer Logo" src="https://github.com/user-attachments/assets/1b71a20c-b522-415e-b65c-47f1814154c6" />
 </p>
 
 <p align="center">
