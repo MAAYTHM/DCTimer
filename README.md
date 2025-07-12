@@ -1,9 +1,34 @@
+<p align="center">
+  <img width="256" height="256" alt="DCTimer Logo" src="https://github.com/user-attachments/assets/0b0b0053-c8f8-4145-b1cd-3c16a17e91e9" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/MAAYTHM/DCTimer/stargazers">
+    <img src="https://img.shields.io/github/stars/MAAYTHM/DCTimer?style=social" alt="Stars" />
+  </a>
+  <a href="https://github.com/MAAYTHM/DCTimer/network/members">
+    <img src="https://img.shields.io/github/forks/MAAYTHM/DCTimer?style=social" alt="Forks" />
+  </a>
+  <a href="https://github.com/MAAYTHM/DCTimer/watchers">
+    <img src="https://img.shields.io/github/watchers/MAAYTHM/DCTimer?style=social" alt="Watchers" />
+  </a>
+  <a href="https://github.com/MAAYTHM/DCTimer/issues">
+    <img src="https://img.shields.io/github/issues/MAAYTHM/DCTimer" alt="Issues" />
+  </a>
+  <a href="https://github.com/MAAYTHM/DCTimer/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/MAAYTHM/DCTimer" alt="License" />
+  </a>
+</p>
+
+---
+
 # DCTimer
 
 **Red Team Time Synchronization Tool**  
 Author: [MAAYTHM](https://github.com/MAAYTHM)
 
 ## Overview
+
 
 DCTimer is a flexible tool for synchronizing your system or process time with a Domain Controller (DC) or NTP server. It is designed for red teamers, penetration testers, and advanced system administrators who need precise time control for operations, testing, or evasion scenarios.
 
@@ -32,6 +57,22 @@ DCTimer supports both system-level and process-level time manipulation technique
    ```
    chmod +x DCTimer.py
    ```
+## System Dependencies
+
+Depending on the technique used, DCTimer may require the following tools:
+
+| Tool               | Technique(s) | Install Command (Debian/Ubuntu)               |
+|--------------------|--------------|-----------------------------------------------|
+| `faketime`         | 6            | `sudo apt install libfaketime`                |
+| `ntpdate`          | 1            | `sudo apt install ntpdate`                    |
+| `ntpd` (NTPsec)    | 2            | `sudo apt install ntp` or `ntpsec`            |
+| `systemd-timesyncd`| 3            | Preinstalled with systemd-enabled systems     |
+| `openntpd`         | 4            | `sudo apt install openntpd`                   |
+
+> ⚠️ Note: Some of these tools may conflict with each other. Make sure only one time daemon is running at a time.
+>  
+> 💡 You can safely test technique 6 (`faketime`) inside containers. Others require root/system-level access.
+
 
 ## Usage
 
@@ -56,21 +97,6 @@ DCTimer supports both system-level and process-level time manipulation technique
 - **Open a shell with DC-synced time (uses $SHELL by default):**
   ```
   ./DCTimer.py -i 10.10.10.1 --shell
-  ```
-
-- **Open a bash shell with DC-synced time:**
-  ```
-  ./DCTimer.py -i 10.10.10.1 --shell bash
-  ```
-
-- **Quiet mode for scripting/pipelines:**
-  ```
-  ./DCTimer.py -i 10.10.10.1 -q date
-  ```
-
-- **Universal reset after system-level changes:**
-  ```
-  sudo ./DCTimer.py --reset
   ```
 
 ## Command-Line Options
@@ -195,6 +221,9 @@ sudo ntpdate pool.ntp.org
 Additionally, restore any modified config files if you used ntpd, openntpd, or systemd-timesyncd.
 
 ## Methodology Flow
+<p align="center">
+<img width="512" height="512" alt="DCTimer Working overview" src="https://github.com/user-attachments/assets/3f0c1f01-9c29-4035-894e-b653e31a8f61" />
+</p>
 
 Below is a typical workflow for DCTimer:
 
